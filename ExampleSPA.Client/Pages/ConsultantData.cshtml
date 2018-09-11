@@ -1,0 +1,44 @@
+﻿@page "/consultant/{action}/{paramConsultantID}"
+@page "/consultant/{action}"
+@inherits ConsultantDataModel
+
+<h1>@title</h1>
+
+@if (action == "fetch")
+{
+    <p>
+        <a href="/consultant/create">Adicionar</a>
+    </p>
+}
+
+@if (consultantList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cargo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in consultantList)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.Name</td>
+                    <td>@c.Position</td>
+                    <td>
+
+                        <a href='/employee/edit/@c.Id'>Edit</a>  |
+                        <a href='/employee/delete/@c.Id'>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
