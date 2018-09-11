@@ -27,7 +27,7 @@ namespace ExampleSPA.Server
                 });
             });
 
-            services.AddSingleton<ConsultantsContext>();
+            services.AddSingleton<ConsultantContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

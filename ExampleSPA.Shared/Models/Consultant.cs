@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ExampleSPA.Shared.Models
 {
-    public partial class Consultants
+    public partial class Consultant
     {
         public int Id { get; set; }
         public string Name { get; set; }

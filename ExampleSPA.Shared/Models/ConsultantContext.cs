@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ExampleSPA.Shared.Models
 {
-    public partial class ConsultantsContext : DbContext
+    public partial class ConsultantContext : DbContext
     {
-        public ConsultantsContext()
+        public ConsultantContext()
         {
         }
 
-        public ConsultantsContext(DbContextOptions<ConsultantsContext> options)
+        public ConsultantContext(DbContextOptions<ConsultantContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Consultants> Consultants { get; set; }
+        public virtual DbSet<Consultant> Consultants { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,7 +28,7 @@ namespace ExampleSPA.Shared.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Consultants>(entity =>
+            modelBuilder.Entity<Consultant>(entity =>
             {
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

@@ -11,6 +11,60 @@
     </p>
 }
 
+@if (action == "create" || action == "edit")
+{
+    <form>
+        <table class="form-group">
+            <tr>
+                <td>
+                    <label for="Name" class="control-label">Nome</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" bind="@consultant.Name" />
+                </td>
+                <td width="20"> </td>
+                <td>
+                    <label for="Department" class="control-label">Cargo</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" bind="@consultant.Position" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="btn btn-success" onclick="@(async () => await CreateConsultant())" style="width:220px;" value="Save" />
+                </td>
+                <td></td>
+                <td width="20"> </td>
+                <td>
+                    <input class="btn btn-danger" onclick="@Cancel" style="width:220px;" value="Cancel" />
+                </td>
+            </tr>
+        </table>
+    </form>
+}
+else if (action == "delete")
+{
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <td>Nome</td>
+                <td>@consultant.Name</td>
+            </tr>
+            <tr>
+                <td>Cargo</td>
+                <td>@consultant.Position</td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" onclick="@(async () => await DeleteConsultant())" value="Excluir" />
+            <input type="submit" value="Cancel" onclick="@Cancel" class="btn" />
+        </div>
+    </div>
+}
+
+
 @if (consultantList == null)
 {
     <p><em>Loading...</em></p>
@@ -34,8 +88,8 @@ else
                     <td>@c.Position</td>
                     <td>
 
-                        <a href='/employee/edit/@c.Id'>Edit</a>  |
-                        <a href='/employee/delete/@c.Id'>Delete</a>
+                        <a href='/consultant/edit/@c.Id'>Editar</a>  |
+                        <a href='/consultant/delete/@c.Id'>Excluir</a>
                     </td>
                 </tr>
             }
